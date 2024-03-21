@@ -5,7 +5,7 @@ words = ["python", "programación", "computadora", "código", "desarrollo",
 # Elegir una palabra al azar
 secret_word = random.choice(words)
 # Número máximo de intentos permitidos
-max_attempts = 10
+max_attempts = 5
 # Lista para almacenar las letras adivinadas
 guessed_letters = []
 print("¡Bienvenido al juego de adivinanzas!")
@@ -13,7 +13,8 @@ print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
 word_displayed = "_" * len(secret_word)
 # Mostrarla palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
-for i in range(max_attempts):
+attempts = 0
+while attempts != max_attempts:
      # Pedir al jugador que ingrese una letra
     letter = input("Ingresa una letra: ").lower()
     # Verificar si la letra ya ha sido adivinada
@@ -27,6 +28,7 @@ for i in range(max_attempts):
         print("¡Bien hecho! La letra está en la palabra.")
     else:
         print("Lo siento, la letra no está en la palabra.")
+        attempts = attempts + 1
     # Mostrar la palabra parcialmente adivinada
     letters = []
     for letter in secret_word:
