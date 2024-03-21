@@ -9,8 +9,16 @@ max_attempts = 5
 # Lista para almacenar las letras adivinadas
 guessed_letters = []
 print("¡Bienvenido al juego de adivinanzas!")
+dificultad = int(input("Elegir dificultad por nivel del 1 al 3: "))
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
-word_displayed = "_" * len(secret_word)
+if dificultad == 1:
+    word_displayed = ''.join([letter if letter in 'aeiouáéíóú' else '_' for letter in secret_word])
+    guessed_letters.extend("aeiouáéíóú")
+elif dificultad == 2:
+    word_displayed = secret_word[0] + '_' * (len(secret_word) - 2) + secret_word[-1]
+    guessed_letters.extend(secret_word[0] + secret_word[-1])
+else:
+    word_displayed = '_' * len(secret_word)  
 # Mostrarla palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
 attempts = 0
